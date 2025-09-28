@@ -9,5 +9,5 @@ package utilities;
  * @author ninol
  */
 public class Constants {
-    
+    public static final String CONFIG_PATH = "src/main/java/config.properties";
 }

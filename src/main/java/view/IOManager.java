@@ -7,7 +7,10 @@ package view;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.NumberFormat;
+
 import javax.swing.JButton;
+import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -27,7 +30,7 @@ public class IOManager extends JFrame {
     private JButton button;
     private JScrollPane scroll;
     private JTextField textName;
-    private JTextField textPhone;
+    private JFormattedTextField textPhone;
     private JTextField textEmail;
     private JLabel textOutput;
     private DefaultTableModel modelTable;
@@ -62,7 +65,8 @@ public class IOManager extends JFrame {
         textName.setLocation(150, 40);
         this.panel.add(this.textName);
         
-        textPhone = new JTextField();
+        NumberFormat intFormat = NumberFormat.getIntegerInstance();
+        textPhone = new JFormattedTextField(intFormat);
         textPhone.setSize(200, 25);
         textPhone.setLocation(150, 80);
         this.panel.add(this.textPhone);
@@ -88,9 +92,11 @@ public class IOManager extends JFrame {
         this.panel.add(label);
         
         button = new JButton("Registrar");
+        button.setActionCommand("Resgistrar");
         button.setSize(90, 25);
         button.setLocation(259, 160);
-        this.panel.add(button); 
+        button.addActionListener(listener);
+        this.panel.add(button);
         
         textOutput = new JLabel();
         textOutput.setSize(325, 25);
