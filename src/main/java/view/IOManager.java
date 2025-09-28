@@ -90,7 +90,7 @@ public class IOManager extends JFrame {
         button = new JButton("Registrar");
         button.setSize(90, 25);
         button.setLocation(259, 160);
-        this.panel.add(button);
+        this.panel.add(button); 
         
         textOutput = new JLabel();
         textOutput.setSize(325, 25);
@@ -101,6 +101,7 @@ public class IOManager extends JFrame {
         String[] columns = {"Nombre", "Teléfono", "Correo"};
         modelTable = new DefaultTableModel(columns, 0);
         table = new JTable(modelTable);
+        table.getTableHeader().setReorderingAllowed(false);
         JScrollPane scroll = new JScrollPane(table);
         scroll.setSize(new Dimension(330,130));
         scroll.setLocation(20, 240);
