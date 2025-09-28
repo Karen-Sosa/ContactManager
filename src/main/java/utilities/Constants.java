@@ -10,4 +10,5 @@ package utilities;
  */
 public class Constants {
     public static final String CONFIG_PATH = "src/main/java/config.properties";
+    public static final String CONTACTS_PATH = "src\\main\\java\\Contacts\\Contacts.json";
 }
