@@ -94,10 +94,8 @@ public class Presenter {
             int titleStyle = Integer.parseInt(config.readerConfig("font.style"));
 
             Font titleFont = new Font(fontName, titleStyle, titleSize);
-
-            String textColor = config.readerConfig("#"+"color.text");
-            
-            frame.setConfig(titleFont, Color.decode(textColor));
+            String textColor = config.readerConfig("color.text");
+            frame.setConfig(titleFont, Color.decode("#"+textColor));
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -106,7 +104,7 @@ public class Presenter {
 
     public String chooseColor(String nameColor) {
         String color = ""; 
-        switch (color) {
+        switch (nameColor) {
             case "Rosa":
                 color = "E989CF";
                 break;
