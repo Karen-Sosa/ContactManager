@@ -8,7 +8,6 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
 import model.*;
 import utilities.Constants;
@@ -52,20 +51,20 @@ public class Presenter {
             public void actionPerformed(ActionEvent e) {
                 String action = e.getActionCommand();
                 switch (action) {
-                    case "Registrar":
+                    case Constants.ACTION_REGISTER:
                         register();
                         break;
-                    case "Configurar":
+                    case Constants.ACTION_CONFIG:
                         configView.setVisible(true);
                         break;
-                    case "Guardar":
+                    case Constants.ACTION_SAVE:
                         saveConfig();
                         break;
-                    case  "Cancelar":
+                    case Constants.ACTION_CANCEL:
                         if (configView != null) {
                             configView.dispose();
                         }
-                        break;   
+                        break;
                 }
             }
 
@@ -87,20 +86,20 @@ public class Presenter {
         }
     }
 
-    public void applyConfig(){
+    public void applyConfig() {
         try {
-            String background = config.readerConfig("color");
-            frame.setBackgroundColor(Color.decode("#"+background));
-            configView.setBackgroundColor(Color.decode("#"+background));
+            String background = config.readerConfig(Constants.CONFIG_COLOR_BG);
+            frame.setBackgroundColor(Color.decode(Constants.NUMERIC + background));
+            configView.setBackgroundColor(Color.decode(Constants.NUMERIC + background));
 
-            String fontName = config.readerConfig("font.name");
-            int titleSize = Integer.parseInt(config.readerConfig("font.size"));
-            int titleStyle = Integer.parseInt(config.readerConfig("font.style"));
+            String fontName = config.readerConfig(Constants.CONFIG_FONT_NAME);
+            int titleSize = Integer.parseInt(config.readerConfig(Constants.CONFIG_FONT_SIZE));
+            int titleStyle = Integer.parseInt(config.readerConfig(Constants.CONFIG_FONT_STYLE));
 
             Font titleFont = new Font(fontName, titleStyle, titleSize);
-            String textColor = config.readerConfig("color.text");
-            frame.setConfig(titleFont, Color.decode("#"+textColor));
-            configView.setConfig(titleFont, Color.decode("#"+textColor));
+            String textColor = config.readerConfig(Constants.CONFIG_COLOR_TEXT);
+            frame.setConfig(titleFont, Color.decode(Constants.NUMERIC + textColor));
+            configView.setConfig(titleFont, Color.decode(Constants.NUMERIC + textColor));
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -108,22 +107,18 @@ public class Presenter {
     }
 
     public String chooseColor(String nameColor) {
-        String color = ""; 
         switch (nameColor) {
-            case "Rosa":
-                color = "E989CF";
-                break;
-            case "Blanco":
-                color = "FFFFFF";
-                break;
-            case "Negro":
-                color = "000000";
-                break;
-            case "Azul":
-                color = "4896D1";
-                break;
+            case Constants.COLOR_NAME_PINK:
+                return Constants.COLOR_HEX_PINK;
+            case Constants.COLOR_NAME_WHITE:
+                return Constants.COLOR_HEX_WHITE;
+            case Constants.COLOR_NAME_BLACK:
+                return Constants.COLOR_HEX_BLACK;
+            case Constants.COLOR_NAME_BLUE:
+                return Constants.COLOR_HEX_BLUE;
+            default:
+                return "";
         }
-        return color;
     }
 
     public void saveConfig() {
@@ -135,20 +130,20 @@ public class Presenter {
 
     public void changeColorText() {
         String color = chooseColor(configView.getTextColor());
-        configManager.writerConfig("color.text", color);
+        configManager.writerConfig(Constants.CONFIG_COLOR_TEXT, color);
     }
 
     public void changeColorBackground() {
         String color = chooseColor(configView.getBackgroundColor());
-        configManager.writerConfig("color", color);
+        configManager.writerConfig(Constants.CONFIG_COLOR_BG, color);
     }
 
     public void changeFont() {
         String sizeFont = configView.getFontSize();
         String fontStyle = String.valueOf(configView.getFontStyle());
         String fontName = configView.getFontName();
-        configManager.writerConfig("font.size", sizeFont);
-        configManager.writerConfig("font.style", fontStyle);
-        configManager.writerConfig("font.name", fontName);
+        configManager.writerConfig(Constants.CONFIG_FONT_SIZE, sizeFont);
+        configManager.writerConfig(Constants.CONFIG_FONT_STYLE, fontStyle);
+        configManager.writerConfig(Constants.CONFIG_FONT_NAME, fontName);
     }
 }

@@ -21,6 +21,8 @@ import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.text.NumberFormatter;
 
+import utilities.Constants;
+
 /**
  *
  * @author ninol
@@ -60,7 +62,7 @@ public class IOManager extends JFrame {
         this.panel.setSize(new Dimension(365, 405));
         this.panel.setLocation(10, 10);
 
-        labelTitle = new JLabel("Agenda de contactos");
+        labelTitle = new JLabel(Constants.LABEL_TITLE);
         labelTitle.setSize(380, 30);
         labelTitle.setLocation(0, 0);
         labelTitle.setHorizontalAlignment(JLabel.CENTER);
@@ -84,30 +86,30 @@ public class IOManager extends JFrame {
         textEmail.setLocation(150, 120);
         this.panel.add(this.textEmail);
 
-        labelName = new JLabel("Nombre");
+        labelName = new JLabel(Constants.LABEL_NAME);
         labelName.setSize(120, 25);
         labelName.setLocation(20, 40);
         this.panel.add(labelName);
 
-        labelPhone = new JLabel("Teléfono");
+        labelPhone = new JLabel(Constants.LABEL_PHONE);
         labelPhone.setSize(120, 25);
         labelPhone.setLocation(20, 80);
         this.panel.add(labelPhone);
 
-        labelEmail = new JLabel("Correo");
+        labelEmail = new JLabel(Constants.LABEL_EMAIL);
         labelEmail.setSize(120, 25);
         labelEmail.setLocation(20, 120);
         this.panel.add(labelEmail);
 
-        button = new JButton("Registrar");
-        button.setActionCommand("Registrar");
+        button = new JButton(Constants.ACTION_REGISTER);
+        button.setActionCommand(Constants.ACTION_REGISTER);
         button.setSize(90, 25);
         button.setLocation(259, 160);
         button.addActionListener(listener);
         this.panel.add(button);
 
-        buttonConfig = new JButton("Configurar");
-        buttonConfig.setActionCommand("Configurar");
+        buttonConfig = new JButton(Constants.ACTION_CONFIG);
+        buttonConfig.setActionCommand(Constants.ACTION_CONFIG);
         buttonConfig.setSize(110, 25);
         buttonConfig.setLocation(130, 160);
         buttonConfig.addActionListener(listener);
@@ -120,7 +122,7 @@ public class IOManager extends JFrame {
         this.panel.add(textOutput);
 
         // TABLA
-        String[] columns = { "Nombre", "Teléfono", "Correo" };
+        String[] columns = Constants.TABLE_COLUMNS;
         modelTable = new DefaultTableModel(columns, 0);
         table = new JTable(modelTable);
         table.getTableHeader().setReorderingAllowed(false);
