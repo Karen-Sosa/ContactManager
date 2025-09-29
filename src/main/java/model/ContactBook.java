@@ -17,4 +17,7 @@ public class ContactBook {
         contacts.add(contact);
     }
 
+    public ArrayList<Contact> getContacts() {
+        return contacts;
+    }
 }

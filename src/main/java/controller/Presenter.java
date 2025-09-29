@@ -8,6 +8,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import model.*;
 import utilities.Constants;
@@ -32,10 +33,16 @@ public class Presenter {
         initListener();
         frame = new IOManager(listener);
         config = new ConfigManager();
-        contactBook = new ContactBook();
         configManager = new ConfigManager();
-        GsonConverter.readFromJson(Constants.CONTACTS_PATH, ContactBook.class);
+        contactBook = GsonConverter.readFromJson(Constants.CONTACTS_PATH, ContactBook.class);
+        initTable();
         applyConfig();
+    }
+
+    public void initTable() {
+        for (Contact contact : contactBook.getContacts()) {
+            frame.upLoadTable(contact.getPersonalData());
+        }
     }
 
     public void initListener() {
