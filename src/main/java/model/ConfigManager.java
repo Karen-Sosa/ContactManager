@@ -24,7 +24,7 @@ public class ConfigManager {
     }
    
 
-    public String readerCofig(String key) {
+    public String readerConfig(String key) {
         try (FileInputStream input = new FileInputStream(Constants.CONFIG_PATH)) {
             Properties prop = new Properties();
             prop.load(input);

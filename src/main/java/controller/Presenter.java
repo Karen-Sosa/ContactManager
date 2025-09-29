@@ -86,16 +86,16 @@ public class Presenter {
 
     public void applyConfig(){
         try {
-            String background = config.readerCofig("color");
-            frame.setBackgroundColor(Color.decode(background));
+            String background = config.readerConfig("color");
+            frame.setBackgroundColor(Color.decode("#"+background));
 
-            String fontName = config.readerCofig("font.name");
-            int titleSize = Integer.parseInt(config.readerCofig("font.size"));
-            int titleStyle = Integer.parseInt(config.readerCofig("font.style"));
+            String fontName = config.readerConfig("font.name");
+            int titleSize = Integer.parseInt(config.readerConfig("font.size"));
+            int titleStyle = Integer.parseInt(config.readerConfig("font.style"));
 
             Font titleFont = new Font(fontName, titleStyle, titleSize);
 
-            String textColor = config.readerCofig("color.text");
+            String textColor = config.readerConfig("#"+"color.text");
             
             frame.setConfig(titleFont, Color.decode(textColor));
 
@@ -108,16 +108,16 @@ public class Presenter {
         String color = ""; 
         switch (color) {
             case "Rosa":
-                color = "#E989CF";
+                color = "E989CF";
                 break;
             case "Blanco":
-                color = "#FFFFFF";
+                color = "FFFFFF";
                 break;
             case "Negro":
-                color = "#000000";
+                color = "000000";
                 break;
             case "Azul":
-                color = "#4896D1";
+                color = "4896D1";
                 break;
         }
         return color;
