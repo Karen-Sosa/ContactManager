@@ -22,6 +22,7 @@ public class ConfigManager {
             e.printStackTrace();
         }
     }
+   
 
     public String readerCofig(String key) {
         try (FileInputStream input = new FileInputStream(Constants.CONFIG_PATH)) {
