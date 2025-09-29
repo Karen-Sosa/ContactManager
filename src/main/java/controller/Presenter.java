@@ -20,6 +20,7 @@ import view.IOManager;
  */
 public class Presenter {
 
+    private ConfigManager configManager;
     private ContactBook contactBook;
     private Contact contanct;
     private IOManager frame;
@@ -32,6 +33,7 @@ public class Presenter {
         frame = new IOManager(listener);
         config = new ConfigManager();
         contactBook = new ContactBook();
+        configManager = new ConfigManager();
         GsonConverter.readFromJson(Constants.CONTACTS_PATH, ContactBook.class);
         applyConfig();
     }
@@ -82,19 +84,6 @@ public class Presenter {
         configView.setVisible(true);
     }
 
-    public void saveConfig(){
-        if (configView != null) {
-        config.writerConfig("font.name", configView.getFontName());
-        config.writerConfig("font.size", String.valueOf(configView.getFontSize()));
-        config.writerConfig("font.style", String.valueOf(configView.getFontStyle()));
-        config.writerConfig("color.text", configView.getTextColor());
-        config.writerConfig("color", configView.getBackgroundColor());
-
-        configView.dispose();
-        applyConfig();
-        }
-    }
-
     public void applyConfig(){
         try {
             String background = config.readerCofig("color");
@@ -115,4 +104,48 @@ public class Presenter {
         }
     }
 
+    public String chooseColor(String nameColor) {
+        String color = ""; 
+        switch (color) {
+            case "Rosa":
+                color = "#E989CF";
+                break;
+            case "Blanco":
+                color = "#FFFFFF";
+                break;
+            case "Negro":
+                color = "#000000";
+                break;
+            case "Azul":
+                color = "#4896D1";
+                break;
+        }
+        return color;
+    }
+
+    public void saveConfig() {
+        changeColorBackground();
+        changeColorText();
+        changeFont();
+        applyConfig();
+    }
+
+    public void changeColorText() {
+        String color = chooseColor(configView.getTextColor());
+        configManager.writerConfig("color.text", color);
+    }
+
+    public void changeColorBackground() {
+        String color = chooseColor(configView.getBackgroundColor());
+        configManager.writerConfig("color", color);
+    }
+
+    public void changeFont() {
+        String sizeFont = configView.getFontSize();
+        String fontStyle = configView.getFontStyle();
+        String fontName = configView.getFontName();
+        configManager.writerConfig("font.size", sizeFont);
+        configManager.writerConfig("font.style", sizeFont);
+        configManager.writerConfig("font.name", fontName);
+    }
 }

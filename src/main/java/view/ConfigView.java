@@ -10,7 +10,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 
-public class ConfigView extends JFrame{
+public class ConfigView extends JFrame {
     private JPanel panel;
     private JLabel fontLabel;
     private JLabel bgColorLabel;
@@ -42,7 +42,7 @@ public class ConfigView extends JFrame{
         String[] fonts = {"Arial", "Times New Roman", "Courier New"};
         String[] sizes = {"14", "18", "20"};
         String[] styles = {"PLAIN", "BOLD", "ITALIC"};
-        String[] colors = {"#E989CF", "#FFFFFF", "#4896D1","#000000"};
+        String[] colors = {"Rosa", "Blanco", "Azul","Negro"};
         
         int labelWidth = 120, fieldWidth = 150, height = 25, gap = 35;
         
@@ -103,12 +103,12 @@ public class ConfigView extends JFrame{
         return (String) fontNameBox.getSelectedItem();
     }
 
-    public int getFontSize() {
-        return Integer.parseInt((String) fontSizeBox.getSelectedItem());
+    public String getFontSize() {
+        return (String) fontSizeBox.getSelectedItem();
     }
 
-    public int getFontStyle() {
-        return fontStyleBox.getSelectedIndex();
+    public String getFontStyle() {
+        return (String) fontStyleBox.getSelectedItem();
     }
 
     public String getTextColor() {

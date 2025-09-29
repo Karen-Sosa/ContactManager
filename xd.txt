@@ -1,0 +1,1 @@
+String[] colors = {"#E989CF", "#FFFFFF", "#4896D1","#000000"};
