@@ -32,6 +32,7 @@ public class Presenter {
     public Presenter() {
         initListener();
         frame = new IOManager(listener);
+        configView = new ConfigView(listener);
         config = new ConfigManager();
         configManager = new ConfigManager();
         contactBook = GsonConverter.readFromJson(Constants.CONTACTS_PATH, ContactBook.class);
@@ -55,7 +56,7 @@ public class Presenter {
                         register();
                         break;
                     case "Configurar":
-                        openConfigView();
+                        configView.setVisible(true);
                         break;
                     case "Guardar":
                         saveConfig();
@@ -86,15 +87,11 @@ public class Presenter {
         }
     }
 
-    public void openConfigView(){
-        configView = new ConfigView(listener);
-        configView.setVisible(true);
-    }
-
     public void applyConfig(){
         try {
             String background = config.readerConfig("color");
             frame.setBackgroundColor(Color.decode("#"+background));
+            configView.setBackgroundColor(Color.decode("#"+background));
 
             String fontName = config.readerConfig("font.name");
             int titleSize = Integer.parseInt(config.readerConfig("font.size"));
@@ -103,6 +100,7 @@ public class Presenter {
             Font titleFont = new Font(fontName, titleStyle, titleSize);
             String textColor = config.readerConfig("color.text");
             frame.setConfig(titleFont, Color.decode("#"+textColor));
+            configView.setConfig(titleFont, Color.decode("#"+textColor));
 
         } catch (Exception e) {
             e.printStackTrace();

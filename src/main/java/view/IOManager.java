@@ -4,9 +4,9 @@
  */
 package view;
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.text.NumberFormat;
 
@@ -165,17 +165,40 @@ public class IOManager extends JFrame {
     }
 
     public void setConfig(Font font, Color color) {
-        labelName.setFont(font);
-        labelPhone.setFont(font);
-        labelEmail.setFont(font);
-        labelTitle.setFont(font);
-        textOutput.setFont(font);
-        
-        labelName.setForeground(color);
-        labelPhone.setForeground(color);
-        labelEmail.setForeground(color);
-        labelTitle.setForeground(color);
-        textOutput.setForeground(color);
+    labelName.setFont(font);
+    labelName.setForeground(color);
+
+    labelPhone.setFont(font);
+    labelPhone.setForeground(color);
+
+    labelEmail.setFont(font);
+    labelEmail.setForeground(color);
+
+    labelTitle.setFont(font);
+    labelTitle.setForeground(color);
+
+    textOutput.setFont(font);
+    textOutput.setForeground(color);
+
+    button.setFont(font);
+    button.setForeground(color);
+
+    buttonConfig.setFont(font);
+    buttonConfig.setForeground(color);
+
+    textName.setFont(font);
+    textName.setForeground(color);
+
+    textPhone.setFont(font);
+    textPhone.setForeground(color);
+
+    textEmail.setFont(font);
+    textEmail.setForeground(color);
+
+    table.setFont(font);
+    table.setForeground(color);
+    table.getTableHeader().setFont(font);
+    table.getTableHeader().setForeground(color);
 
     }    
 }
