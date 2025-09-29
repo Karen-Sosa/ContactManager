@@ -107,8 +107,8 @@ public class ConfigView extends JFrame {
         return (String) fontSizeBox.getSelectedItem();
     }
 
-    public String getFontStyle() {
-        return (String) fontStyleBox.getSelectedItem();
+    public int getFontStyle() {
+        return (int) fontStyleBox.getSelectedIndex();
     }
 
     public String getTextColor() {

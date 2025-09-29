@@ -140,10 +140,10 @@ public class Presenter {
 
     public void changeFont() {
         String sizeFont = configView.getFontSize();
-        String fontStyle = configView.getFontStyle();
+        String fontStyle = String.valueOf(configView.getFontStyle());
         String fontName = configView.getFontName();
         configManager.writerConfig("font.size", sizeFont);
-        configManager.writerConfig("font.style", sizeFont);
+        configManager.writerConfig("font.style", fontStyle);
         configManager.writerConfig("font.name", fontName);
     }
 }
